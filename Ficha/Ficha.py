@@ -29,7 +29,9 @@ def reiniciar(): #Función para reiniciar la música de fondo
     pg.mixer.music.play()
 
 
-#Función que ejecuta 'Ficha personal'
+
+
+#Función que ejecuta 'Ficha personal' 
 def ex_fip ():
     #Configuración de la ventana de ficha personal
     ventfip = tk.Toplevel() #Se usa toplevel para crear una ventana secundaria, ya que si se usa Tk, se crearía una nueva ventana principal, lo que no es lo que se quiere
