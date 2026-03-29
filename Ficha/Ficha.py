@@ -1,5 +1,20 @@
 import tkinter as tk
 import pygame as pg
+from PIL import Image, ImageTk, ImageDraw
+
+
+#Función para redondear las imágenes de la ficha personal
+def imagen_redondeada(ruta, ancho, alto, radio):
+    img = Image.open(ruta).resize((ancho, alto), Image.LANCZOS) #LANCZOS es un filtro de alta calidad para redimensionar imágenes, lo que ayuda a mantener la calidad de la imagen
+    
+    marco = Image.new('L', (ancho, alto), 0)
+    draw = ImageDraw.Draw(marco)
+    draw.rounded_rectangle((0, 0, ancho, alto), radius=radio, fill=255)
+    
+    resultado = Image.new('RGBA', (ancho, alto), (0, 0, 0, 0))
+    resultado.paste(img, mask=marco)
+    
+    return ImageTk.PhotoImage(resultado)
 
 
 #Función que ejecuta 'Ficha personal'
@@ -20,4 +35,4 @@ def ex_fip ():
     canvafip.create_text(352, 560, text= 'Whyd You Only Call Me When Youre High', font = ('Segoe UI', 10))
     canvafip.create_text(395, 590, text= 'Género musical: Indie Rock', font = ('Segoe UI', 10))
 
-    ventfip.mainloop()
+    ventfip.mainloop() 
