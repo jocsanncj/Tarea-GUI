@@ -2,7 +2,7 @@ import tkinter as tk
 import pygame as pg
 from tkinter import messagebox
 from PIL import Image, ImageTk, ImageDraw
-
+#Jocsan Calvo Jiménez
 
 #Función asociada a 'Análisis de números'
 def pares(num):
