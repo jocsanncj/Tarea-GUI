@@ -23,6 +23,10 @@ def pares_aux(num, op):
 
 #Función que ejecuta'Análisis de números'
 def ex_an ():
+    if ventprincipal.sec is not None: #Cambiar  a la ventana secundaria si ya existe una abierta, para evitar abrir varias ventanas de análisis de números u otras a la vez
+        ventprincipal.sec.destroy()
+
+
     #Configuración de la ventana de análisis de números
     ventpares = tk.Toplevel()
     ventprincipal.sec = ventpares
@@ -60,11 +64,30 @@ def ex_an ():
     cnumero = tk.Entry(ventpares, width= 35)
     cnumero.place(relx=0.5, rely=0.5, anchor='center')
 
+    calc = tk.Button(ventpares, text= 'Calcular', width= 6, height= 1, command= lambda: calcular())
+    calc.place(x= 250, y= 341)
+
+    def limpiar(): #Función para limpiar el entry y los pares del canva
+        cnumero.delete(0, 'end')
+        canvapares.itemconfig(textresult, text='')
+
+    def cerrar_an(): #Función para cerrar la ventana de análisis de números y volver al menú principal
+        ventpares.destroy()
+    
+    limp = tk.Button(ventpares, text= 'Limpiar', width= 6, height= 1, command= lambda: limpiar())
+    limp.place(x= 349, y= 341)
+
+    botonmenu = tk.Button(ventpares, text= 'Menú principal', command= lambda: cerrar_an())
+    botonmenu.place(x= 270, y= 600)
+    
+    canvapares.pack()
+
 #Configuración de la ventana principal
 ventprincipal = tk.Tk()
 ventprincipal.title('Tarea')
 ventprincipal.geometry('650x650')
 ventprincipal.resizable(width = False, height = False)
+ventprincipal.sec = None #Variable para almacenar la ventana secundaria
 
 #Configuración del canva principal
 canva1 = tk.Canvas(ventprincipal, bg='#48C0D5')
