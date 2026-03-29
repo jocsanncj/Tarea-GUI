@@ -54,18 +54,22 @@ def ex_fip ():
 
     #Agrega la imagen del programador al canva
     yomero = imagen_redondeada('FotoYo.png', 167, 200, 15)
+    yomero = imagen_redondeada('Media/FotoYo.png', 167, 200, 15)
+
     canvafip.create_image(120, 210, image=yomero)
     canvafip.image1 = yomero
 
     #Agrega la imagen del lugar al canva
 
     lugar = imagen_redondeada('FotoCot.png', 260, 170, 15)
+    lugar = imagen_redondeada('Media/FotoCot.png', 260, 170, 15)
     canvafip.create_image(371, 371, image=lugar)
     canvafip.image2 = lugar
 
     #Agrega la imagen del artista al canva
-
     artista = imagen_redondeada('ArticMonkeys.png', 200, 200, 15)
+    artista = imagen_redondeada('Media/ArticMonkeys.png', 200, 200, 15)
+
     canvafip.create_image(600, 610, image= artista)
     canvafip.image3 = artista
 
@@ -74,6 +78,9 @@ def ex_fip ():
 
     pg.mixer.init() #Inicia el mezclador de pygame
     pg.mixer.music.load('Whyd You Only Call Me When Youre High.mp3')
+
+    pg.mixer.init() #Inicia el mezclador de pygame
+    pg.mixer.music.load('Media/Whyd You Only Call Me When Youre High.mp3')
 
     #Configura los botones de reproducción, pausa y reinicio de la música
     marcofip = tk.Frame(canvafip)
