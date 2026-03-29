@@ -75,4 +75,10 @@ def ex_an ():
     botonmenu = tk.Button(ventpares, text= 'Menú principal', command= lambda: cerrar_an())
     botonmenu.place(x= 270, y= 600)
     
+
     canvapares.pack()
+
+    canvapares.pack()
+
+    ventpares.mainloop()
+
