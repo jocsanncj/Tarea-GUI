@@ -25,7 +25,6 @@ def pares_aux(num, op):
 def ex_an ():
     #Configuración de la ventana de análisis de números
     ventpares = tk.Toplevel()
-    ventprincipal.sec = ventpares
     ventpares.title('Análisis de números')
     ventpares.geometry('650x650')
     ventpares.resizable (height= False, width= False)
@@ -60,37 +59,20 @@ def ex_an ():
     cnumero = tk.Entry(ventpares, width= 35)
     cnumero.place(relx=0.5, rely=0.5, anchor='center')
 
-#Configuración de la ventana principal
-ventprincipal = tk.Tk()
-ventprincipal.title('Tarea')
-ventprincipal.geometry('650x650')
-ventprincipal.resizable(width = False, height = False)
+    calc = tk.Button(ventpares, text= 'Calcular', width= 6, height= 1, command= lambda: calcular())
+    calc.place(x= 250, y= 341)
 
-#Configuración del canva principal
-canva1 = tk.Canvas(ventprincipal, bg='#48C0D5')
-canva1.config(width=642, height= 642)
-canva1.create_text(321, 100, text= '¡Bienvenido!', font = ('Segoe UI', 28, 'bold'))
-canva1.pack()
+    def limpiar(): #Función para limpiar el entry y los pares del canva
+        cnumero.delete(0, 'end')
+        canvapares.itemconfig(textresult, text='')
 
-#Configuración del marco de los botones
-marco1 = tk.Frame(ventprincipal)
-marco1.columnconfigure(0, weight=1)
-marco1.columnconfigure(1, weight=1)
-marco1.columnconfigure(2, weight=1)
+    def cerrar_an(): #Función para cerrar la ventana de análisis de números y volver al menú principal
+        ventpares.destroy()
+    
+    limp = tk.Button(ventpares, text= 'Limpiar', width= 6, height= 1, command= lambda: limpiar())
+    limp.place(x= 349, y= 341)
 
-#Botón para ejecutar 'Análisis de números'
-boton1 = tk.Button(marco1, text='Análisis de números', width= 19, height= 5, font= ('Segoe UI', 12))
-boton1.grid(row=0, column=0)
-
-#Botón para ejecutar 'Ficha personal'
-boton2 = tk.Button(marco1, text='Ficha personal', width= 19, height= 5, font= ('Segoe UI', 12))
-boton2.grid(row=0, column=1)
-
-#Botón para ejecutar 'Animación'
-boton3 = tk.Button(marco1, text='Animación', width= 19, height= 5, font= ('Segoe UI', 12))
-boton3.grid(row=0, column=2)
-
-marco1.place(relx=0.5, rely=0.5, anchor='center')
-
-
-ventprincipal.mainloop()
+    botonmenu = tk.Button(ventpares, text= 'Menú principal', command= lambda: cerrar_an())
+    botonmenu.place(x= 270, y= 600)
+    
+    canvapares.pack()
