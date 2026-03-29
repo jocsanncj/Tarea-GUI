@@ -178,6 +178,26 @@ def ex_fip ():
     botonmenu = tk.Button(ventfip, text= 'Menú principal', command= lambda: cerrar_fip())
     botonmenu.place(x= 328, y= 715)
 
+
+
+#Función 'Animación'
+def ex_bo():
+    if ventprincipal.sec is not None:
+        ventprincipal.sec.destroy()
+
+    #Configuración de la ventana de animación
+    ventbo = tk.Toplevel()
+    ventprincipal.sec = ventbo
+    ventbo.title('Animación')
+    ventbo.geometry('650x690')
+    ventbo.resizable(width=False, height=False)
+
+    W, H = 642, 642 #Dimensiones del canva de animación
+
+    #Configuración del canva de animación
+    canvabo = tk.Canvas(ventbo, width=W, height=H, bg='black')
+    canvabo.pack()
+
 #Configuración de la ventana principal
 ventprincipal = tk.Tk()
 ventprincipal.title('Tarea')
