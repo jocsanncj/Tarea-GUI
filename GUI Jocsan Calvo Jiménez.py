@@ -198,6 +198,18 @@ def ex_bo():
     canvabo = tk.Canvas(ventbo, width=W, height=H, bg='black')
     canvabo.pack()
 
+    bolas = [ #Cada bola es una lista con la posición x, posición y, velocidad en x, velocidad en y, radio y color
+        [100, 100, 4, 3, 30, 'green'],
+        [400, 300, -3, 5, 30, 'blue'],
+    ]
+
+    velocidad = [1] #Define la velocidad de las bolas, para poder modificarla desde la función de animación
+
+    circulos = [
+        canvabo.create_oval(bolas[0][0]-bolas[0][4], bolas[0][1]-bolas[0][4], bolas[0][0]+bolas[0][4], bolas[0][1]+bolas[0][4], fill=bolas[0][5], outline=''),
+        canvabo.create_oval(bolas[1][0]-bolas[1][4], bolas[1][1]-bolas[1][4], bolas[1][0]+bolas[1][4], bolas[1][1]+bolas[1][4], fill=bolas[1][5], outline='')
+    ] #Crea listas para almacenar los hitboxes de las bolas para detectar colisiones
+
 #Configuración de la ventana principal
 ventprincipal = tk.Tk()
 ventprincipal.title('Tarea')
