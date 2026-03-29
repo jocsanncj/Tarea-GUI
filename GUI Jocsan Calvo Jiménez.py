@@ -1,4 +1,5 @@
 import tkinter as tk
+import pygame as pg
 from tkinter import messagebox
 
 
@@ -82,6 +83,23 @@ def ex_an ():
     
     canvapares.pack()
 
+
+
+#Función que ejecuta 'Ficha personal'
+def ex_fip ():
+    if ventprincipal.sec is not None: #Cambiar  a la ventana secundaria si ya existe una abierta, para evitar abrir varias ventanas de ficha personal u otras a la vez
+        ventprincipal.sec.destroy()
+
+    ventfip = tk.Toplevel()
+    ventprincipal.sec = ventfip
+    ventfip.title('Ficha personal')
+    ventfip.geometry('750x750')
+    ventfip.resizable(width= False, height= False)
+
+
+    canvafip = tk.Canvas(ventfip, bg= 'White')
+    canvafip.config(width=742, height= 742)
+
 #Configuración de la ventana principal
 ventprincipal = tk.Tk()
 ventprincipal.title('Tarea')
@@ -102,11 +120,11 @@ marco1.columnconfigure(1, weight=1)
 marco1.columnconfigure(2, weight=1)
 
 #Botón para ejecutar 'Análisis de números'
-boton1 = tk.Button(marco1, text='Análisis de números', width= 19, height= 5, font= ('Segoe UI', 12))
+boton1 = tk.Button(marco1, text='Análisis de números', width= 19, height= 5, font= ('Segoe UI', 12), command= lambda: ex_an())
 boton1.grid(row=0, column=0)
 
 #Botón para ejecutar 'Ficha personal'
-boton2 = tk.Button(marco1, text='Ficha personal', width= 19, height= 5, font= ('Segoe UI', 12))
+boton2 = tk.Button(marco1, text='Ficha personal', width= 19, height= 5, font= ('Segoe UI', 12), command= lambda: ex_fip())
 boton2.grid(row=0, column=1)
 
 #Botón para ejecutar 'Animación'
